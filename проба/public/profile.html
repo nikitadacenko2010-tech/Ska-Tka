@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль | Ska-Tka</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">Ska-Tka</a>
+                <nav class="header-nav"><a href="category.html"><i class="fa-solid fa-arrow-left"></i> Назад до магазину</a></nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 40px 20px;">
+        <h1 style="font-size: 32px; font-weight: 900; margin-bottom: 25px; color: #102a43;">Налаштування акаунта</h1>
+
+        <!-- Верхние вкладки с сильным неоновым эффектом при активном состоянии -->
+        <div style="display: flex; gap: 12px; margin-bottom: 35px; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; flex-wrap: wrap;">
+            <button class="secondary-btn active" id="btnTabAccount" onclick="showProfileTab('account')">Мій акаунт</button>
+            <button class="secondary-btn" id="btnTabAddresses" onclick="showProfileTab('addresses')">Мої адреси</button>
+            <button class="secondary-btn" id="btnTabSettings" onclick="showProfileTab('settings')">Налаштування</button>
+            <button class="secondary-btn" id="btnTabOrders" onclick="showProfileTab('orders')">Мої замовлення</button>
+            <button class="secondary-btn" id="btnTabWishlist" onclick="showProfileTab('wishlist')">Мій список побажань</button>
+        </div>
+
+        <!-- РАЗДЕЛ: МОЙ АККАУНТ -->
+        <div id="sectionAccount" class="profile-section">
+            <div style="display: grid; grid-template-columns: 1fr 300px; gap: 35px;">
+                <div>
+                    <div style="background:#fff; padding:35px; border-radius:18px; border:1px solid #e2e8f0; margin-bottom:25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                        <h2 style="font-size:22px; font-weight:900; margin-bottom:8px; color:#102a43;">Акаунт</h2>
+                        <p style="color:#627d98; font-size:14px; font-weight:700; margin-bottom:25px;">Перегляньте та змініть особисті дані нижче.</p>
+                        
+                        <div class="form-field"><label>Ім’я для відображення *</label><input type="text" id="accDisplayName" value="Нікіта Даценко"></div>
+                        <div class="form-field"><label>Заголовок</label><input type="text" id="accTitle" placeholder="Статус"></div>
+
+                        <div style="display:flex; gap:12px; margin-top:25px;">
+                            <button class="secondary-btn" onclick="resetForm()">Скинути</button>
+                            <button class="action-btn" style="width:auto; padding:12px 25px;" onclick="updateProfile()">Оновити</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Колонка с аватаркой справа -->
+                <div>
+                    <div style="background:#fff; padding:30px; border-radius:18px; border:1px solid #e2e8f0; text-align:center; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                        <h3 style="font-size:16px; font-weight:900; margin-bottom:20px; color:#102a43;">Зображення профілю</h3>
+                        <div style="width:150px; height:150px; margin:0 auto 20px auto; border-radius:50%; overflow:hidden; border:4px solid #0077cc; background:#f0f4f8; display:flex; align-items:center; justify-content:center; box-shadow: 0 0 20px rgba(0, 119, 204, 0.3);">
+                            <img id="profileAvatarImg" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" alt="Avatar" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" onchange="uploadAvatar(this)">
+                        <button class="secondary-btn" style="width:100%;" onclick="document.getElementById('avatarFileInput').click()"><i class="fa-solid fa-camera"></i> Змінити фото</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ: МОИ АДРЕСА -->
+        <div id="sectionAddresses" class="profile-section" style="display:none;">
+            <div style="background:#fff; padding:35px; border-radius:18px; border:1px solid #e2e8f0;">
+                <h2 style="font-size:22px; font-weight:900; margin-bottom:8px; color:#102a43;">Мої адреси</h2>
+                <p style="color:#627d98; font-size:14px; font-weight:700; margin-bottom:25px;">Додавайте адреси та керуйте ними.</p>
+                <button class="action-btn" style="width:auto; padding:12px 25px;" onclick="addNewAddress()">Додати нову адресу</button>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ: НАСТРОЙКИ -->
+        <div id="sectionSettings" class="profile-section" style="display:none;">
+            <div style="background:#fff; padding:35px; border-radius:18px; border:1px solid #e2e8f0;">
+                <h2 style="font-size:22px; font-weight:900; margin-bottom:8px; color:#102a43;">Налаштування сповіщень</h2>
+                <p style="color:#627d98; font-size:14px; font-weight:700; margin-bottom:25px;">Виберіть, про що хочете отримувати сповіщення.</p>
+                <div class="switch-label"><span>Маркетингові ел. листи</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ: МОИ ЗАКАЗЫ -->
+        <div id="sectionOrders" class="profile-section" style="display:none;">
+            <div style="background:#fff; padding:35px; border-radius:18px; border:1px solid #e2e8f0;">
+                <h2 style="font-size:24px; font-weight:900; margin-bottom:8px; color:#102a43;">Мої замовлення</h2>
+                <p style="color:#627d98; font-size:14px; font-weight:700; margin-bottom:30px;">Перегляньте історію замовлень або статус останнього замовлення.</p>
+                
+                <div id="ordersContentBody" style="text-align:center; padding: 40px 0;">
+                    <p style="color:#243b53; font-size:16px; font-weight:800; margin-bottom:15px;">Ви ще не розмістили жодного замовлення.</p>
+                    <a href="category.html" style="color:#0077cc; font-weight:900; text-decoration:underline; font-size:16px;">Знайти щось</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ: СПИСОК ПОЖЕЛАНИЙ -->
+        <div id="sectionWishlist" class="profile-section" style="display:none;">
+            <div style="background:#fff; padding:35px; border-radius:18px; border:1px solid #e2e8f0;">
+                <h2 style="font-size:24px; font-weight:900; margin-bottom:8px; color:#102a43;">Мій список побажань</h2>
+                <p style="color:#627d98; font-size:14px; font-weight:700; margin-bottom:30px;">Переглядайте товари, які ви додали до списку бажань.</p>
+                
+                <div id="wishlistContentBody" style="text-align:center; padding: 40px 0;">
+                    <p style="color:#243b53; font-size:16px; font-weight:800; margin-bottom:15px;">Ви ще не додали жодного товару до списку побажань.</p>
+                    <a href="category.html" style="color:#0077cc; font-weight:900; text-decoration:underline; font-size:16px;">Перейти до каталогу</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="blue-footer">
+        <div class="container">
+            <div class="footer-brand">Ska-Tka</div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="genericModal">
+            <button class="close-modal" id="closeModal">×</button>
+            <h3 id="modalTitle" style="margin-bottom:15px; font-size:22px; font-weight:900; text-align:center; color:#102a43;">Вікно</h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const tab = urlParams.get('tab');
+        if (tab) showProfileTab(tab);
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товар | Ska-Tka</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="logo">Ska-Tka</a>
+                <nav class="header-nav"><a href="category.html"><i class="fa-solid fa-arrow-left"></i> Назад до магазину</a></nav>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" id="openCartModal"><i class="fa-solid fa-cart-shopping"></i> Кошик <span class="badge" id="cartCounter">0</span></button>
+                <button class="header-btn" id="openFavModal"><i class="fa-regular fa-heart"></i> <span class="badge" id="favCounter">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 400px; gap: 35px;">
+                <div style="background:#fff; padding:30px; border-radius:18px; border:1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                    <img id="productMainImage" src="" alt="" style="width:100%; height:440px; object-fit:contain; background:#f8fafc; border-radius:12px; border: 1px solid #e2e8f0;">
+                    <div id="productGalleryThumbnails" style="display:flex; gap:12px; margin-top:15px; overflow-x:auto; padding-bottom:5px;"></div>
+                    
+                    <h3 style="margin-top:35px; margin-bottom:15px; font-size:20px; font-weight:900; color:#102a43; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">Характеристики</h3>
+                    <div id="productCharacteristics" style="margin-bottom: 30px; font-size: 15px;"></div>
+
+                    <h3 style="margin-top:25px; margin-bottom:12px; font-size:20px; font-weight:900; color:#102a43;">Опис товару</h3>
+                    <p id="productDesc" style="color:#486581; line-height:1.7; font-weight:700; margin-bottom: 30px;"></p>
+                </div>
+
+                <div style="background:#fff; padding:30px; border-radius:18px; border:1px solid #e2e8f0; height:fit-content; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                    <span id="productDate" style="font-size:13px; font-weight:700; color:#627d98;"></span>
+                    <h1 id="productTitle" style="font-size:24px; font-weight:900; color:#102a43; margin:10px 0 15px 0;"></h1>
+                    <div id="productPrice" style="font-size:32px; font-weight:900; background: linear-gradient(135deg, #0077cc, #00b4d8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom:25px;"></div>
+                    
+                    <div style="background:#f0f4f8; padding:18px; border-radius:12px; margin-bottom:25px; border:1px solid #cbd5e1;">
+                        <div id="sellerName" style="font-weight:900; font-size:16px; color:#102a43;"></div>
+                        <button class="action-btn" id="showPhoneBtn" style="background:#102a43; margin-top:12px;"><i class="fa-solid fa-phone"></i> Показати телефон</button>
+                    </div>
+
+                    <button class="action-btn" id="addToCartBtn" style="margin-bottom: 12px; background: linear-gradient(135deg, #059669, #10b981);"><i class="fa-solid fa-cart-plus"></i> Додати в кошик</button>
+                    <button class="action-btn" id="buyBtn" style="margin-bottom: 25px;"><i class="fa-solid fa-shield-halved"></i> Купити зараз</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="blue-footer">
+        <div class="container">
+            <div class="footer-brand">Ska-Tka</div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="genericModal">
+            <button class="close-modal" id="closeModal">×</button>
+            <h3 id="modalTitle" style="margin-bottom:15px; font-size:22px; font-weight:900; text-align:center; color:#102a43;">Вікно</h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

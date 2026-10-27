@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подати оголошення | Ska-Tka</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left"><a href="index.html" class="logo">Ska-Tka</a></div>
+            <div class="header-right"><a href="category.html" style="text-decoration:none; color:#0077cc; font-weight:900;"><i class="fa-solid fa-store"></i> До магазину</a></div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div style="background:#fff; max-width:680px; margin:40px auto; padding:40px; border-radius:20px; border:1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0, 119, 204, 0.08);">
+                <h2 style="margin-bottom:30px; font-size:24px; font-weight:900; color:#102a43;"><i class="fa-solid fa-circle-plus" style="color:#0077cc;"></i> Нове оголошення</h2>
+                <form id="createAdForm">
+                    <div class="form-field"><label>Назва товару</label><input type="text" id="newTitle" required placeholder="Наприклад, Перука натуральна"></div>
+                    <div class="form-field">
+                        <label>Категорія</label>
+                        <select id="newCategory">
+                            <option value="electronics">Електроніка</option>
+                            <option value="auto">Транспорт</option>
+                            <option value="property">Нерухомість</option>
+                            <option value="work">Робота</option>
+                            <option value="other">Інше</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Стан</label>
+                        <select id="newCondition">
+                            <option value="used">Б/У</option>
+                            <option value="new">Нове</option>
+                        </select>
+                    </div>
+                    <div class="form-field"><label>Ціна (грн)</label><input type="number" id="newPrice" required placeholder="1250"></div>
+                    <div class="form-field"><label>Місто</label><input type="text" id="newLocation" required placeholder="Київ"></div>
+                    
+                    <div class="form-field">
+                        <label>Фото товару (до 7 штук)</label>
+                        <input type="file" id="newImageFiles" accept="image/*" multiple required style="padding:10px; background:#f8fafc; border:2px dashed #cbd5e1; border-radius:10px;">
+                        <div id="imgPreviewGallery" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:15px;"></div>
+                    </div>
+
+                    <div class="form-field"><label>Опис</label><textarea id="newDesc" required placeholder="Опишіть стан, характеристики..." style="height: 120px;"></textarea></div>
+                    <button type="submit" class="action-btn">Опублікувати</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="blue-footer">
+        <div class="container">
+            <div class="footer-brand">Ska-Tka</div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="genericModal">
+            <button class="close-modal" id="closeModal">×</button>
+            <h3 id="modalTitle" style="margin-bottom:15px; font-size:22px; font-weight:900; text-align:center; color:#102a43;">Вікно</h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
