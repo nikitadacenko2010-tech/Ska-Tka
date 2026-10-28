@@ -1,3 +1,0 @@
-[mounts]
-  source = "ska_data"
-  destination = "/data"
